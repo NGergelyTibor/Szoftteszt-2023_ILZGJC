@@ -25,7 +25,6 @@
                 900: 'CM',
                 1000: 'M',
             };
-
             let result = '';
 
             // Iteráció
@@ -40,26 +39,30 @@
 
             return result;
         }
+            // Teszt esetek
+            const testCases = [
+            { input: 1, expected: "I" },
+            { input: 4, expected: "IV" },
+            { input: 9, expected: "IX" },
+            { input: 10, expected: "X" },
+            { input: 40, expected: "XL" },
+            { input: 50, expected: "L" },
+            { input: 90, expected: "XC" },
+            { input: 100, expected: "C" },
+            { input: 400, expected: "CD" },
+            { input: 500, expected: "D" },
+            { input: 900, expected: "CM" },
+            { input: 1000, expected: "M" },
+            { input: 3999, expected: "MMMCMXCIX" },
+        ];
+        
           // QUnit tesztek
           QUnit.test("Arab számok -> Római számok", function (assert) {
-            assert.strictEqual(arabicToRoman(1), "I");
-            assert.strictEqual(arabicToRoman(4), "IV");
-            assert.strictEqual(arabicToRoman(9), "IX");
-            assert.strictEqual(arabicToRoman(10), "X");
-            assert.strictEqual(arabicToRoman(40), "XL");
-            assert.strictEqual(arabicToRoman(50), "L");
-            assert.strictEqual(arabicToRoman(90), "XC");
-            assert.strictEqual(arabicToRoman(100), "C");
-            assert.strictEqual(arabicToRoman(400), "CD");
-            assert.strictEqual(arabicToRoman(500), "D");
-            assert.strictEqual(arabicToRoman(900), "CM");
-            assert.strictEqual(arabicToRoman(1000), "M");
-            assert.strictEqual(arabicToRoman(3999), "MMMCMXCIX");
+            for (const testCase of testCases) {
+                const result = arabicToRoman(testCase.input);
+                assert.strictEqual(result, testCase.expected, `Input ${testCase.input} should produce ${testCase.expected}`);
+            }
         });
-
-
-
-
 </script>
 </body>
 </html>
