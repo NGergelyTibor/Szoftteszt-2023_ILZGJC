@@ -18,14 +18,14 @@ class Holdjaro:
                 elif self.direction == 'W':
                     self.x -= 1
             elif command == 'b':
-                if self.direction == 'N':
-                    self.y -= 1
-                elif self.direction == 'E':
-                    self.x -= 1
-                elif self.direction == 'S':
-                    self.y += 1
-                elif self.direction == 'W':
-                    self.x += 1
+                    if self.direction == 'N':
+                        self.y += 1
+                    elif self.direction == 'E':
+                        self.x += 1
+                    elif self.direction == 'S':
+                        self.y -= 1
+                    elif self.direction == 'W':
+                        self.x -= 1
             elif command == 'l':
                 if self.direction == 'N':
                     self.direction = 'W'
