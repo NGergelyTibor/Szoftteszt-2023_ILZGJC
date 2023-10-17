@@ -1,8 +1,10 @@
 class Holdjaro:
-    def __init__(self, x, y, direction):
+    def __init__(self, x, y, direction, obstacles, planet_radius):
         self.x = x
         self.y = y
         self.direction = direction
+        self.obstacles = obstacles
+        self.planet_radius = planet_radius
 
     def move(self, commands):
         for command in commands:
@@ -22,7 +24,7 @@ class Holdjaro:
                     self.x -= 1
                 elif self.direction == 'S':
                     self.y += 1
-                elif self.direction == 'W':
+                elif self direction == 'W':
                     self.x += 1
             elif command == 'l':
                 if self.direction == 'N':
@@ -45,9 +47,15 @@ class Holdjaro:
             else:
                 raise ValueError("Invalid command")
 
-            # térkép szélei
-            self.x = max(0, min(self.x, 100))  # Térkép szélessége 100 egység
-            self.y = max(0, min(self.y, 100))  # Térkép magassága 100 egység
+            # térkép szélei (a gömb alakú bolygó esetében)
+            distance_from_center = (self.x ** 2 + self.y ** 2) ** 0.5
+            if distance_from_center > self.planet_radius:
+                angle = math.atan2(self.y, self.x)
+                self.x = self.planet_radius * math.cos(angle)
+                self.y = self.planet_radius * math.sin(angle)
 
+            # Akadályok ellenőrzése
+            if (self.x, self.y) in self.obstacles:
+                return "Akadály!"
 
         return self.x, self.y, self.direction
