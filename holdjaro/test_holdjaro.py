@@ -35,11 +35,17 @@ class TestHoldjaro(unittest.TestCase):
         holdjaro = Holdjaro(5, 5, 'N', obstacles, planet_radius)
         result = holdjaro.move('f')
         self.assertEqual(result, "Akadály!")
-        
+
     def test_forward_movement_north(self):
         holdjaro = Holdjaro(0, 0, 'N', [], 100)
         result = holdjaro.move('f')
         self.assertEqual(result, (0, 1, 'N'))
+
+
+    def test_forward_movement_east(self):
+        holdjaro = Holdjaro(0, 0, 'E', [], 100)
+        result = holdjaro.move('f')
+        self.assertEqual(result, (1, 0, 'E'))
 
 
 if __name__ == '__main__':
