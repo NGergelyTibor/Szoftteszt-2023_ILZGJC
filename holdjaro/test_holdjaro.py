@@ -46,6 +46,11 @@ class TestHoldjaro(unittest.TestCase):
         holdjaro = Holdjaro(0, 0, 'E', [], 100)
         result = holdjaro.move('f')
         self.assertEqual(result, (1, 0, 'E'))
+        
+    def test_forward_movement_south(self):
+        holdjaro = Holdjaro(0, 0, 'S', [], 100)
+        result = holdjaro.move('f')
+        self.assertEqual(result, (0, -1, 'S'))
 
 
 if __name__ == '__main__':
