@@ -24,7 +24,7 @@ class Holdjaro:
                     self.x -= 1
                 elif self.direction == 'S':
                     self.y += 1
-                elif self direction == 'W':
+                elif self.direction == 'W':
                     self.x += 1
             elif command == 'l':
                 if self.direction == 'N':
