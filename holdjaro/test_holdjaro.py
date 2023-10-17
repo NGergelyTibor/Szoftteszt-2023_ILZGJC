@@ -28,6 +28,14 @@ class TestHoldjaro(unittest.TestCase):
         holdjaro = Holdjaro(45, 0, 'E', obstacles, planet_radius)
         result = holdjaro.move('f')
         self.assertEqual(result, (50, 0, 'E'))
+        
+    def test_obstacle_detection(self):
+        obstacles = [(5, 5), (10, 10)]
+        planet_radius = 50
+        holdjaro = Holdjaro(5, 5, 'N', obstacles, planet_radius)
+        result = holdjaro.move('f')
+        self.assertEqual(result, "Akadály!")
+
 
 if __name__ == '__main__':
     unittest.main()
