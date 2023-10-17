@@ -50,9 +50,10 @@ class Holdjaro:
             # térkép szélei (a gömb alakú bolygó esetében)
             distance_from_center = (self.x ** 2 + self.y ** 2) ** 0.5
             if distance_from_center > self.planet_radius:
-                angle = math.atan2(self.y, self.x)
-                self.x = self.planet_radius * math.cos(angle)
-                self.y = self.planet_radius * math.sin(angle)
+                scale_factor = self.planet_radius / distance_from_center
+                self.x *= scale_factor
+                self.y *= scale_factor
+
 
             # Akadályok ellenőrzése
             if (self.x, self.y) in self.obstacles:
