@@ -16,6 +16,11 @@ class TestHoldjaro(unittest.TestCase):
         holdjaro = Holdjaro(0, 0, 'N', [], 100)
         result = holdjaro.move('l')
         self.assertEqual(result, (0, 0, 'W'))
+        
+    def test_turn_right(self):
+        holdjaro = Holdjaro(0, 0, 'E', [], 100)
+        result = holdjaro.move('r')
+        self.assertEqual(result, (0, 0, 'S'))
 
 if __name__ == '__main__':
     unittest.main()
